@@ -1,0 +1,17 @@
+<section id='static-campaign'>
+<div class='some-class'>
+    <img sony-replace='true' src='https://sonyglobal.scene7.com/is/image/gwtprod/4563e5f374282efd082274e9af56ec07?fmt=png-alpha&wid=330' />
+    <h1 data-translate="true">text translate sample 1 </h1>
+    <h2 data-translate="true">text translate sample 2</h2>
+    <span>non-translatable text sample</span>
+    <div class='other-class'>
+        <a target="_self" href='https://www.sony.co.uk/electronics/tv/t/televisions' class='btn btn-primary'>target _self link example</a>
+        <a target="_blank" href='http://www.google.com' class='btn btn-primary'> target _blank link example</a>
+        <img sony-replace='true' src='http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828' />
+    </div>
+    <section>
+        <label data-translate="true"> Translatable something text 1</label>
+        <label data-translate="true"> Translatable something text 2 </label>
+    </section>
+</div>
+</section>

@@ -1,0 +1,88 @@
+{
+  "_id": "urn:sony:module:html_template:123456",
+  "type": "urn:sony:module:html_template",
+  "name": "example",
+  "locale": "fr_FR",
+  "template": "c2VjdGlvbiNzdGF0aWMtY2FtcGFpZ24KICAuc29tZS1jbGFzcwogICAgK2ltYWdlKGZpZWxkTWFwWydiMDU5MjljZWI2N2UnXSkKICAgIHwgICAgIAogICAgaDEoZGF0YS10cmFuc2xhdGU9J3RydWUnLCBkYXRhLWlkPSdiYWQxNWRjNDRlYWInKSAhe2ZpZWxkTWFwWydiYWQxNWRjNDRlYWInXS5jb3B5fQogICAgfCAgICAgCiAgICBoMihkYXRhLXRyYW5zbGF0ZT0ndHJ1ZScsIGRhdGEtaWQ9J2M5YjU4NGIyZDBlNScpICF7ZmllbGRNYXBbJ2M5YjU4NGIyZDBlNSddLmNvcHl9CiAgICB8ICAgICAKICAgIHNwYW4gbm9uLXRyYW5zbGF0YWJsZSB0ZXh0IHNhbXBsZQogICAgfCAgICAgCiAgICAub3RoZXItY2xhc3MKICAgICAgK2xpbmsoZmllbGRNYXBbJ2M1ODcyODRmYjcwMyddKQogICAgICB8ICAgICAgICAgCiAgICAgICtsaW5rKGZpZWxkTWFwWydiNTQ2YmIwZDczMjcnXSkKICAgICAgfCAgICAgICAgIAogICAgICAraW1hZ2UoZmllbGRNYXBbJzA4NjQxZWU1OTFhNiddKQogICAgfCAgICAgCiAgICBzZWN0aW9uCiAgICAgIGxhYmVsKGRhdGEtdHJhbnNsYXRlPSd0cnVlJywgZGF0YS1pZD0nNTdhOWJhOWRkNDg2JykgIXtmaWVsZE1hcFsnNTdhOWJhOWRkNDg2J10uY29weX0KICAgICAgfCAgICAgICAgIAogICAgICBsYWJlbChkYXRhLXRyYW5zbGF0ZT0ndHJ1ZScsIGRhdGEtaWQ9J2U1YjAyNTkwNTE4NycpICF7ZmllbGRNYXBbJ2U1YjAyNTkwNTE4NyddLmNvcHl9Cg==",
+  "css": "",
+  "js": "",
+  "fields": [{
+    "id": "b05929ceb67e",
+    "type": "urn:sony:field:image",
+    "image": {
+      "type": "urn:sony:image_container",
+      "imageFamily": {
+        "locale": "all",
+        "type": "urn:sony:media:image_family",
+        "images": {
+          "desktop": {
+            "externalUrl": "https://sonyglobal.scene7.com/is/image/gwtprod/4563e5f374282efd082274e9af56ec07?fmt=png-alpha&wid=330"
+          },
+          "tablet": {
+            "externalUrl": "https://sonyglobal.scene7.com/is/image/gwtprod/4563e5f374282efd082274e9af56ec07?fmt=png-alpha&wid=330"
+          },
+          "phone": {
+            "externalUrl": "https://sonyglobal.scene7.com/is/image/gwtprod/4563e5f374282efd082274e9af56ec07?fmt=png-alpha&wid=330"
+          }
+        },
+        "altText": ""
+      }
+    }
+  }, {
+    "id": "bad15dc44eab",
+    "type": "urn:sony:field:text",
+    "copy": "text translate sample 1 "
+  }, {
+    "id": "c9b584b2d0e5",
+    "type": "urn:sony:field:text",
+    "copy": "text translate sample 2"
+  }, {
+    "id": "c587284fb703",
+    "type": "urn:sony:field:link",
+    "link": {
+      "type": "urn:sony:link",
+      "label": "target _self link example",
+      "destinationUrl": "https://www.sony.co.uk/electronics/tv/t/televisions",
+      "openInNewWindow": "no"
+    }
+  }, {
+    "id": "b546bb0d7327",
+    "type": "urn:sony:field:link",
+    "link": {
+      "type": "urn:sony:link",
+      "label": " target _blank link example",
+      "destinationUrl": "http://www.google.com",
+      "openInNewWindow": "yes"
+    }
+  }, {
+    "id": "08641ee591a6",
+    "type": "urn:sony:field:image",
+    "image": {
+      "type": "urn:sony:image_container",
+      "imageFamily": {
+        "locale": "all",
+        "type": "urn:sony:media:image_family",
+        "images": {
+          "desktop": {
+            "externalUrl": "http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828"
+          },
+          "tablet": {
+            "externalUrl": "http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828"
+          },
+          "phone": {
+            "externalUrl": "http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828"
+          }
+        },
+        "altText": ""
+      }
+    }
+  }, {
+    "id": "57a9ba9dd486",
+    "type": "urn:sony:field:text",
+    "copy": " Translatable something text 1"
+  }, {
+    "id": "e5b025905187",
+    "type": "urn:sony:field:text",
+    "copy": " Translatable something text 2 "
+  }]
+}
