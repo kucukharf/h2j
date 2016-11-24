@@ -10,16 +10,16 @@ Run
 	in directory run this command
 		''$ ~ http-server -p ${PORT_NUMBER} -a ${ADDRESS}'' 
 
-		PORT_NUMBER : @integer 	ex: 9000
-		ADDRESS		: @ip 		ex:	127.0.0.1
+	PORT_NUMBER : @integer 	ex: 9000
+	ADDRESS		: @ip 		ex:	127.0.0.1
 
-	now you can hit the url on browser 127.0.0.1:9000
+	
+	now you can hit the url on browser 
 
-	paste your html to textbox
+	127.0.0.1:9000
 
-	Open Console
-
-	Run this command in console,
+	
+	paste your html to textbox then open your console run this command,
 
 	StaticHtmlParser.statics._JADE	
 
