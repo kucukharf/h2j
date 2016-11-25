@@ -5,9 +5,13 @@ Personal Project
 
 Setup 
 	npm install -g http-server
-
 Run
 	in directory run this command
+		
+		npm install to install npm dependencies and then 
+
+		''grunt dist''
+
 		''$ ~ http-server -p ${PORT_NUMBER} -a ${ADDRESS}'' 
 
 	PORT_NUMBER : @integer 	ex: 9000

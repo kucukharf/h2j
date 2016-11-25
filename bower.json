@@ -1,0 +1,24 @@
+{
+  "name": "h2j",
+  "description": "Html to Jade, Json, Base64 Convertion",
+  "main": "GruntFile.js",
+  "authors": [
+    "Burak Arslan <burak.arslan@eu.sony.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "jade",
+    "json",
+    "base64",
+    "encoding",
+    "decoding"
+  ],
+  "homepage": "https://github.com/kucukharf/h2j",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

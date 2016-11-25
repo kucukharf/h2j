@@ -1,0 +1,25 @@
+{
+  "name": "h2j",
+  "version": "0.0.1",
+  "description": "Html to Jade, Json, Base64 Convertion",
+  "main": "GruntFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kucukharf/h2j.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kucukharf/h2j/issues"
+  },
+  "homepage": "https://github.com/kucukharf/h2j#readme",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
