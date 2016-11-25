@@ -35,7 +35,7 @@ var StaticHtmlParser = StaticHtmlParser || {
         }
     },
     startStaticHtmlParser: function() {
-        this.addEventListeners();
+        this.resetStatics();
     },
     addEventListeners: function() {
         _self = this;
@@ -46,9 +46,10 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     convert2Jade: function(string, options) {
         var _self = this;
+        _self.statics._HTML = string.trim();
         var options = options || _self.options.converters.jade;
 
-        Html2Jade.convertHtml(string, options, function(err, output) {
+        Html2Jade.convertHtml(_self.statics._HTML, options, function(err, output) {
             _self.statics._JADE = output.jade
             _self.statics._JSON = output.json
         });
@@ -70,8 +71,8 @@ var StaticHtmlParser = StaticHtmlParser || {
             "template": "wtbW9kdWxlIHtmb250LWZhbWlseTogJ1JhbGV3YXknLCBz",
             "css": "",
             "js": "",
-            "fields":this.statics._JSON.fields,
-            "template": this.statics._ENCODED 
+            "fields": this.statics._JSON.fields,
+            "template": this.statics._ENCODED
         }
     },
     setStatics: function() {
@@ -84,12 +85,13 @@ var StaticHtmlParser = StaticHtmlParser || {
         this.statics._JADE = "";
         this.statics._ENCODED = "";
         this.statics._DECODED = "";
+        this.statics._JSON = "";
+        this.statics._OUTPUT = "";
     },
     getStatics: function() {
         return this.statics;
     },
-    getOutputJsonModel:function(){
-        console.log(JSON.stringify());
+    getOutputJsonModel: function() {
         return this.statics._OUTPUT;
     }
 }
