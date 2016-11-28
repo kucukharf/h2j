@@ -413,7 +413,7 @@
         var UniqueID = Html2Jade.generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
         tagAttr = this.writer.tagAttr(node, output.indents);
-        output.writeln("+link(fieldMap['" + UniqueID + "'])");
+        output.writeln("+link(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         var link = {
           "id": UniqueID,
           "type": "urn:sony:field:link",
