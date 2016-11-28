@@ -463,7 +463,8 @@
               "type": "urn:sony:media:image_family",
               "images": {
                 "desktop": {
-                  "externalUrl": node.getAttribute('src') || ''
+                  "externalUrl": node.getAttribute('src') || '',
+                  "md5":"a"
                 },
                 "tablet": {
                   "externalUrl": node.getAttribute('src') || ''
