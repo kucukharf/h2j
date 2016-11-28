@@ -415,8 +415,8 @@
         tagAttr = this.writer.tagAttr(node, output.indents);
         output.writeln("+link(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         var link = {
-          "id": UniqueID,
           "type": "urn:sony:field:link",
+          "id": UniqueID,
           "link": {
             "type": "urn:sony:link",
             "label": node.innerText,
@@ -434,8 +434,8 @@
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
 
           var text = {
-            "id": UniqueID,
             "type": "urn:sony:field:text",
+            "id": UniqueID,
             "copy": node.innerText || ''
           }
           testJson.fields.push(text)
@@ -454,8 +454,8 @@
         output.writeln("+image(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         
         var img = {
-          "id": UniqueID,
           "type": "urn:sony:field:image",
+          "id": UniqueID,
           "image": {
             "type": "urn:sony:image_container",
             "imageFamily": {
