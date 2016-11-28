@@ -1242,16 +1242,16 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     createModuleJSONPattern: function() {
         return this.statics._OUTPUT = {
-            "_id": "urn:sony:module:html_template:123456",
+            "_id": "urn:sony:module:html_template:1",
             "type": "urn:sony:module:html_template",
+            "masterId":"urn:sony:module:html_template",
             "name": "example",
             "locale": "fr_FR",
-            "template": "wtbW9kdWxlIHtmb250LWZhbWlseTogJ1JhbGV3YXknLCBz",
+            "html":this.statics._HTML,
+            "template": this.statics._ENCODED,
             "css": "",
             "js": "",
-            "fields": this.statics._JSON.fields,
-            "template": this.statics._ENCODED,
-            "html":this.statics._HTML
+            "fields": this.statics._JSON.fields
         }
     },
     setStatics: function() {
