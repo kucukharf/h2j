@@ -1,0 +1,71 @@
+<style type="text/css">
+.sample-static-html-module {padding: 12em 3em; position:relative; font-size: 18px; color: #000; text-align:center;}
+.hero-image { position: absolute; width: 100%; left: 0; top: 0; bottom: 0; right: 0; z-index: -1;}
+h1.sample-title, h2.sample-title { font-weight: 200;margin: 0.4em 0; text-align:center; }
+h1.sample-title{font-size: 3em;}
+h2.sample-title{color: #fff; font-size: 2em;}
+.wrap{ color:#fff; }
+.sample-link{margin:2em auto;}
+.newline{ display:block; margin:1em auto; max-width:300px; color:#fff; }
+</style>
+
+<section id="static-campaign">
+	<div class="sample-static-html-module some-class">
+		<img class="hero-image" data-replace-src='true' src='http://sonyglobal.scene7.com/is/image/gwtprod/7b4a4b5486eaa7dcbb884d74f209605a?fmt=pjpeg&wid=1664&qlt=43' />
+		<h1 class='sample-title' style='color:#f25529'>This Static Campaign is
+			<span data-translate="true" class="txt-rotate" data-period="1000"></span> </h1>
+		<h5 data-translate="true" class="sample-title t4-bold l-o-d emphasis" style="color:#000">Create your own module.</h5>
+		<span class="newline" data-translate="true">Incredible brightness and contrast that make colours burst to life in exceptional 4K detail.</span>
+		<a target="_blank" class="btn pct-n-0-product lt3 sample-link" href="//www.sony.co.uk/electronics/televisions/xd9405-xd9305-series?cpint=HOMEPAGE_TOPBANNER_4KHDRQ3CAMPAIGN_XD93/94" title="Find out more" target="_self">Click Here to Learn</a>
+	</div>
+</section>
+
+<script type="text/javascript">
+var TxtRotate = function(el, toRotate, period) {
+this.toRotate = toRotate;
+this.el = el;
+this.loopNum = 0;
+this.period = parseInt(period, 10) || 2000;
+this.txt = '';
+this.tick();
+this.isDeleting = false;
+};
+TxtRotate.prototype.tick = function() {
+var i = this.loopNum % this.toRotate.length;
+var fullTxt = this.toRotate[i];
+if (this.isDeleting) {
+this.txt = fullTxt.substring(0, this.txt.length - 1);
+} else {
+this.txt = fullTxt.substring(0, this.txt.length + 1);
+}
+this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+var that = this;
+var delta = 300 - Math.random() * 100;
+if (this.isDeleting) { delta /= 2; }
+if (!this.isDeleting && this.txt === fullTxt) {
+delta = this.period;
+this.isDeleting = true;
+} else if (this.isDeleting && this.txt === '') {
+this.isDeleting = false;
+this.loopNum++;
+delta = 500;
+}
+setTimeout(function() {
+that.tick();
+}, delta);
+};
+window.onload = function() {
+var elements = document.getElementsByClassName('txt-rotate');
+for (var i=0; i<elements.length; i++) {
+var toRotate = [ " nerdy.", " simple.", " pure JS.", " pretty.", " fun!" ];
+var period = elements[i].getAttribute('data-period');
+if (toRotate) {
+new TxtRotate(elements[i], toRotate, period);
+}
+}
+var css = document.createElement("style");
+css.type = "text/css";
+css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+document.body.appendChild(css);
+};
+</script>

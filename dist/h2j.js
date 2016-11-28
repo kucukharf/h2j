@@ -751,8 +751,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
             "type": "urn:sony:link",
             "label": node.innerText,
             "destinationUrl": node.getAttribute('href'),
-            "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no',
-            "cssClasses":node.getAttribute("class")
+            "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
           }
         };
         testJson.fields.push(link)
@@ -782,7 +781,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         var UniqueID = Html2Jade.generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
         tagAttr = this.writer.tagAttr(node, output.indents);
-        output.writeln("+image(fieldMap['" + UniqueID + "'])");
+        output.writeln("+image(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         
         var img = {
           "id": UniqueID,
