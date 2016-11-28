@@ -421,7 +421,8 @@
             "type": "urn:sony:link",
             "label": node.innerText,
             "destinationUrl": node.getAttribute('href'),
-            "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
+            "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no',
+            "cssClasses":node.getAttribute("class")
           }
         };
         testJson.fields.push(link)
