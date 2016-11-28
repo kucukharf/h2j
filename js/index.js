@@ -69,7 +69,7 @@ var StaticHtmlParser = StaticHtmlParser || {
             "masterId":"urn:sony:module:html_template",
             "name": "example",
             "locale": "fr_FR",
-            "html":this.statics._HTML,
+            "customStaticHtml":this.statics._HTML,
             "template": this.statics._ENCODED,
             "css": "",
             "js": "",
