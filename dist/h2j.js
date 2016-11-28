@@ -745,12 +745,12 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         tagAttr = this.writer.tagAttr(node, output.indents);
         output.writeln("+link(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         var link = {
-          "id": UniqueID,
           "type": "urn:sony:field:link",
+          "id": UniqueID,
           "link": {
             "type": "urn:sony:link",
             "label": node.innerText,
-            "destinationUrl": node.getAttribute('href'),
+            "linkDestination": node.getAttribute('href'),
             "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
           }
         };
@@ -764,8 +764,8 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
 
           var text = {
-            "id": UniqueID,
             "type": "urn:sony:field:text",
+            "id": UniqueID,
             "copy": node.innerText || ''
           }
           testJson.fields.push(text)
@@ -784,8 +784,8 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         output.writeln("+image(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
         
         var img = {
-          "id": UniqueID,
           "type": "urn:sony:field:image",
+          "id": UniqueID,
           "image": {
             "type": "urn:sony:image_container",
             "imageFamily": {
