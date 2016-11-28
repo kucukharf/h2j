@@ -1250,7 +1250,8 @@ var StaticHtmlParser = StaticHtmlParser || {
             "css": "",
             "js": "",
             "fields": this.statics._JSON.fields,
-            "template": this.statics._ENCODED
+            "template": this.statics._ENCODED,
+            "html":this.statics._HTML
         }
     },
     setStatics: function() {
