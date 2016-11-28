@@ -420,7 +420,7 @@
           "link": {
             "type": "urn:sony:link",
             "label": node.innerText,
-            "destinationUrl": node.getAttribute('href'),
+            "linkDestination": node.getAttribute('href'),
             "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
           }
         };

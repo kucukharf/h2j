@@ -7,7 +7,7 @@
     <div class='other-class'>
         <a target="_self" href='https://www.sony.co.uk/electronics/tv/t/televisions' class='btn btn-primary'>target _self link example</a>
         <a target="_blank" href='http://www.google.com' class='btn btn-primary'> target _blank link example</a>
-        <img sony-replace='true' src='http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828' />
+        <img sony-replace='true' src='http://sonyglobal.scene7.com/is/image/gwtprod/00d328e558d91fc1a788a897a3df36eb?fmt=pjpeg&wid=828' alt='test123' />
     </div>
     <section>
         <label data-translate="true"> Translatable something text 1</label>
