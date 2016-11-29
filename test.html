@@ -1,29 +1,33 @@
 <!-- css styles goes here !-->
-	<style type="text/css">
-	.sample-static-html-module{padding:12em 3em;position:relative;font-size:18px;color:#000;text-align:center}.sample-static-content{position:relative;z-index:2}.hero-image{position:absolute;width:100%;left:0;top:0;bottom:0;right:0;z-index:1}h1.sample-title,h2.sample-title{font-weight:200;margin:.4em 0;text-align:center}h1.sample-title{font-size:3em}h2.sample-title{color:#fff;font-size:2em}.wrap{color:#fff}.sample-link{margin:2em auto}.newline{display:block;margin:1em auto;max-width:300px;color:#fff}
-	</style>
+<style type="text/css">
+.sample-static-html-module{padding:12em 3em 10em;position:relative;font-size:18px;color:#000;text-align:center}.sample-static-content{position:relative;z-index:2}.hero-image, .hero-image-wrapper{position:absolute;width:100%;left:0;top:0;bottom:0;right:0;z-index:1}h1.sample-title,h2.sample-title{font-weight:200;margin:.4em 0;text-align:center}h1.sample-title{font-size:3em}h2.sample-title{color:#fff;font-size:2em}.wrap{color:#fff}.sample-link{margin:2em auto}.newline{display:block;margin:1em auto;max-width:700px;color:#fff}
+</style>
 <!-- css styles goes here !-->
-
-
-
 <!-- html content goes here !-->
-	<section id="static-campaign">
-		<div class="sample-static-html-module some-class">
-			<div class="sample-static-content">
-			<h1 class='sample-title' style='color:#f25529'>This Static Campaign is
-				<span data-translate="true" class="txt-rotate" data-period="1000"></span> </h1>
-			<h5 data-translate="true" class="sample-title t4-bold l-o-d emphasis" style="color:#000">Create your own module.</h5>
-			<span class="newline" data-translate="true">Incredible brightness and contrast that make colours burst to life in exceptional 4K detail.</span>
+<section id="static-campaign">
+	<div class="sample-static-html-module some-class">
+		<div class="sample-static-content">
+			<h1 class='sample-title' style='color:#f25529'>
+			<span class="text-title">This Static Campaign is</span>
+				<span class="txt-rotate" data-period="1000">nerdy.</span>
+			</h1>
+			<h5 class="sample-title t4-bold l-o-d emphasis" style="color:#000">Create your own module.</h5>
+			<p class="newline p3">Static campaign module is pre-defined module on the canvas editor. Here you can enter in a static campaign module that only render its own css, js and html. Static Campaign module does not mean support to all features of sony modules, although it could, this is unlikely what you want to do.</p>
 			<a target="_blank" class="btn pct-n-0-product lt3 sample-link" href="//www.sony.co.uk/electronics/televisions/xd9405-xd9305-series?cpint=HOMEPAGE_TOPBANNER_4KHDRQ3CAMPAIGN_XD93/94" title="Find out more" target="_self">Click Here to Learn</a>
+			<a data-field-type="text" class="btn pct-n-0-product lt3 sample-link" href="#static-campaign">In Page Link</a>
+		</div>
+		<div class="hero-image-wrapper">
+			<img class="hero-image" src='http://sonyglobal.scene7.com/is/image/gwtprod/7b4a4b5486eaa7dcbb884d74f209605a?fmt=pjpeg&wid=1664&qlt=43' alt='image Alt Text 1' />
+			<img class="hero-image" src='http://sonyglobal.scene7.com/is/image/gwtprod/2dbcd93dc16e60c159c46de3b6eb7a4c?fmt=jpeg&wid=1664&qlt=43' alt='image Alt Text 2' />
+			<img class="hero-image" src='http://sonyglobal.scene7.com/is/image/gwtprod/11c6639c4efea7dff9e63518bc649c54?fmt=jpeg&wid=1664&qlt=43' alt='image Alt Text 3' />
+			<img class="hero-image" src='http://sonyglobal.scene7.com/is/image/gwtprod/b60d6f0751fd101d3e2cc3fe3f3d5ffa?fmt=pjpeg&wid=1664&qlt=43' alt='image Alt Text 4' />
+			<img class="hero-image" src='http://sonyglobal.scene7.com/is/image/gwtprod/f7d4f9649e2dabda1bf8fa0a098b918d?fmt=pjpeg&wid=1664&qlt=43' alt='image Alt Text 5' />
+			<div>
 			</div>
-			<img class="hero-image" data-replace-src='true' src='http://sonyglobal.scene7.com/is/image/gwtprod/7b4a4b5486eaa7dcbb884d74f209605a?fmt=pjpeg&wid=1664&qlt=43' alt='test213' />
 		</div>
 	</section>
-<!-- html content goes here !-->
-
-
-
-<!-- js content goes here !-->
+	<!-- html content goes here !-->
+	<!-- js content goes here !-->
 	<script type="text/javascript">
 	var TxtRotate = function(el, toRotate, period) {
 		this.toRotate = toRotate;
@@ -74,5 +78,26 @@
 		css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
 		document.body.appendChild(css);
 	};
+	function startSlider(){
+		$(".hero-image-wrapper > img:gt(0)").hide();
+		setInterval(function() {
+				$('.hero-image-wrapper> img:first')
+				.fadeOut(400)
+				.next()
+				.fadeIn(400)
+				.end()
+				.appendTo('.hero-image-wrapper');
+		},  5000);
+	}
+	console.log($('h1').length > 0);
+	$(document).ready(function() {
+		startSlider();
+		console.log("You can Use Sony Libraries");
+		setTimeout(function() {
+			// $('html, body').animate({
+				// 	scrollTop: 100
+			// }, 1000);
+		}, 1500);
+	})
 	</script>
-<!-- js content goes here !-->
+	<!-- js content goes here !-->

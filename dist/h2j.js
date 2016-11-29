@@ -695,9 +695,6 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
       tagHead = this.writer.tagHead(node);
       tagAttr = this.writer.tagAttr(node, output.indents);
       tagText = this.writer.tagText(node);
-
-
-
       if (tagName === 'script' || tagName === 'style') {
         if (node.hasAttribute('src')) {
           output.writeln(tagHead + tagAttr);
@@ -742,27 +739,47 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
       } else if (tagName === 'a') {
         var UniqueID = Html2Jade.generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
-        tagAttr = this.writer.tagAttr(node, output.indents);
-        output.writeln("+link(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
-        var link = {
-          "type": "urn:sony:field:link",
-          "id": UniqueID,
-          "link": {
-            "type": "urn:sony:link",
-            "label": node.innerText,
-            "linkDestination": node.getAttribute('href'),
-            "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
-          }
-        };
-        testJson.fields.push(link)
-      } else if (tagText) {
+        var type = node.getAttribute('data-field-type');
 
-        if (node.getAttribute("data-translate") == "true")  {
+        tagAttr = this.writer.tagAttr(node, output.indents);
+        if (type === 'text') {
+            var UniqueID = Html2Jade.generateRandomNumber()
+          node.setAttribute("data-id", UniqueID)
+          tagAttr = this.writer.tagAttr(node, output.indents);
+          tagText = "!{fieldMap['" + UniqueID + "'].copy}"
+          var text = {
+            "type": "urn:sony:field:text",
+            "id": UniqueID,
+            "copy": node.innerText || ''
+          }
+          testJson.fields.push(text)
+          output.writeln(tagHead + tagAttr + ' ' + tagText);
+          
+        } else {
+          output.writeln("+link(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
+          var link = {
+            "type": "urn:sony:field:link",
+            "id": UniqueID,
+            "link": {
+              "type": "urn:sony:link",
+              "label": node.innerText,
+              "linkDestination": node.getAttribute('href'),
+              "openInNewWindow": node.getAttribute("target") === '_blank' ? 'yes' : 'no'
+            }
+          };
+          testJson.fields.push(link)
+        }
+
+
+
+      } else if (tagText) {
+        if (node.getAttribute("data-translate") === "no")  {
+          tagAttr = this.writer.tagAttr(node, output.indents);
+        } else {
           var UniqueID = Html2Jade.generateRandomNumber()
           node.setAttribute("data-id", UniqueID)
           tagAttr = this.writer.tagAttr(node, output.indents);
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
-
           var text = {
             "type": "urn:sony:field:text",
             "id": UniqueID,
@@ -779,10 +796,11 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
       } else if (tagName === 'img') {
 
         var UniqueID = Html2Jade.generateRandomNumber()
+
         node.setAttribute("data-id", UniqueID)
         tagAttr = this.writer.tagAttr(node, output.indents);
-        output.writeln("+image(fieldMap['" + UniqueID + "'], '"+ node.getAttribute("class")+ "')");
-        
+        output.writeln("+image(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
+
         var img = {
           "type": "urn:sony:field:image",
           "id": UniqueID,
@@ -794,7 +812,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
               "images": {
                 "desktop": {
                   "externalUrl": node.getAttribute('src') || '',
-                  "md5":"a"
+                  "md5": "a"
                 },
                 "tablet": {
                   "externalUrl": node.getAttribute('src') || ''
@@ -807,14 +825,11 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
             }
           }
         };
-
         testJson.fields.push(img)
       } else {
-
         output.writeln(tagHead + tagAttr);
         return this.children(node, output);
       }
-
     };
 
     Converter.prototype.children = function(parent, output, indent) {
@@ -1203,6 +1218,7 @@ var StaticHtmlParser = StaticHtmlParser || {
                 selectById: true,
                 bodyless: true,
                 wrapper: true,
+                wrapLength:1000,
                 donotencode: true
             }
         }
@@ -1211,17 +1227,50 @@ var StaticHtmlParser = StaticHtmlParser || {
         htmlTextBox: {
             item: document.getElementById("htmlInput"),
             type: 'change'
+        },
+        resultBox: {
+            item: document.getElementById("resultBox")
         }
     },
     startStaticHtmlParser: function() {
         this.resetStatics();
+        this.checkBeforeStart() && this.addEventListeners();
+    },
+    syntaxHighlight: function(json) {
+    
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+
+    },
+    checkBeforeStart: function() {
+        return this.elements.htmlTextBox === null ? false : true;
     },
     addEventListeners: function() {
         _self = this;
         this.elements.htmlTextBox.item.addEventListener(this.elements.htmlTextBox.type, function() {
             _self.statics._HTML = this.value.trim();
             _self.convert2Jade(_self.statics._HTML, null)
+            _self.showResults();
         })
+    },
+    showResults: function(argument) {
+
+       this.elements.resultBox.item.innerHTML = this.syntaxHighlight(JSON.stringify(this.statics, undefined, 4))
     },
     convert2Jade: function(string, options) {
         var _self = this;
