@@ -91,10 +91,10 @@ var StaticHtmlParser = StaticHtmlParser || {
         _self.statics._HTML.length > 0 ? _self.setStatics() : _self.resetStatics()
     },
     encodeOutput: function(string) {
-        return Base64.encode(string)
+        return this.b64EncodeUnicode(string)
     },
     decodeOutput: function(string) {
-        return Base64.decode(string)
+        return this.b64DecodeUnicode(string)
     },
     createModuleJSONPattern: function() {
         return this.statics._OUTPUT = {
@@ -109,6 +109,16 @@ var StaticHtmlParser = StaticHtmlParser || {
             "js": "",
             "fields": this.statics._JSON.fields
         }
+    },
+    b64DecodeUnicode: function(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    },
+    b64EncodeUnicode: function (str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+        return String.fromCharCode('0x' + p1);
+    }));
     },
     setStatics: function() {
         this.statics._ENCODED = this.encodeOutput(this.statics._JADE)
