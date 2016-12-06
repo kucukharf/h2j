@@ -98,11 +98,8 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     createModuleJSONPattern: function() {
         return this.statics._OUTPUT = {
-            "_id": "urn:sony:module:html_template:1",
             "type": "urn:sony:module:html_template",
-            "masterId":"urn:sony:module:html_template",
             "name": "example",
-            "locale": "fr_FR",
             "customStaticHtml":this.statics._HTML,
             "template": this.statics._ENCODED,
             "css": "",

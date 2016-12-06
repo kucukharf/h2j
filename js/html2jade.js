@@ -27,6 +27,11 @@
     FS = require("fs");
     Path = require("path");
     Ent = require("he");
+    
+    var testJson = {
+      fields: []
+    };
+
   } else {
     Ent = he;
     window.Html2Jade = scope;
@@ -407,13 +412,13 @@
       } else if (this.options.bodyless && (tagName === 'html' || tagName === 'body' || tagName === 'head')) {
         return this.children(node, output, false);
       } else if (tagName === 'a') {
-        var UniqueID = Html2Jade.generateRandomNumber()
+        var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
         var type = node.getAttribute('data-field-type');
 
         tagAttr = this.writer.tagAttr(node, output.indents);
         if (type === 'text') {
-            var UniqueID = Html2Jade.generateRandomNumber()
+          var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
           node.setAttribute("data-id", UniqueID)
           tagAttr = this.writer.tagAttr(node, output.indents);
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
@@ -447,7 +452,7 @@
         if (node.getAttribute("data-translate") === "no")  {
           tagAttr = this.writer.tagAttr(node, output.indents);
         } else {
-          var UniqueID = Html2Jade.generateRandomNumber()
+          var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
           node.setAttribute("data-id", UniqueID)
           tagAttr = this.writer.tagAttr(node, output.indents);
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
@@ -466,8 +471,7 @@
         }
       } else if (tagName === 'img') {
 
-        var UniqueID = Html2Jade.generateRandomNumber()
-
+        var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
         node.classList.add("canvas-sc-image-selector")
         tagAttr = this.writer.tagAttr(node, output.indents);
@@ -812,11 +816,11 @@
       });
     };
   }
-  scope.generateRandomNumber = function(test) {
+  generateRandomNumber = function(test) {
     // var uniqId = new Date().getTime() * Math.floor(Math.random() * 10);
     // if(uniqId == 0 || uniqId < 0 || !Number.isInteger(uniqId)){
     //   
-    //   return Html2Jade.generateRandomNumber();
+    //   return generateRandomNumber();
     // } else {
     //   return uniqId;
     // }
