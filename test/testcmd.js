@@ -1,4 +1,4 @@
-var assert, async, child_process, exec, existsSync, fs, html2jade, path, testFile, options;
+var assert, async, child_process, exec, existsSync, fs, html2jade, path, testFile, options, atob;
 
 assert = require('assert');
 fs = require('fs');
@@ -7,6 +7,7 @@ Parser = require('../js/index.js');
 HTML2JADE = require('../js/html2jade.js');
 child_process = require('child_process');
 async = require('async');
+atob = require('atob');
 
 options = {
   inputDir: './mock/',
@@ -103,14 +104,14 @@ describe("html2jade", function() {
 
 
 describe("StaticHTMLParser", function() {
- console.log(Parser);
+
     
     it('should decode encoded base64 string', function() {
-      
-      //actual = '<img class="hero-image" src="http://sonyglobal.scene7.com/is/image/gwtprod/7b4a4b5486eaa7dcbb884d74f209605a?fmt=pjpeg&wid=1664&qlt=43" alt="image Alt Text 1" />';
-      //expected = Parser.decodeOutput("PGltZyBjbGFzcz0iaGVyby1pbWFnZSIgc3JjPSdodHRwOi8vc29ueWdsb2JhbC5zY2VuZTcuY29tL2lzL2ltYWdlL2d3dHByb2QvN2I0YTRiNTQ4NmVhYTdkY2JiODg0ZDc0ZjIwOTYwNWE/Zm10PXBqcGVnJndpZD0xNjY0JnFsdD00MycgYWx0PSdpbWFnZSBBbHQgVGV4dCAxJyAvPg==")
-      //assert.equal(actual, expected);
+        
+        //actual = '<img class="hero-image" src="http://sonyglobal.scene7.com/is/image/gwtprod/7b4a4b5486eaa7dcbb884d74f209605a?fmt=pjpeg&wid=1664&qlt=43" alt="image Alt Text 1" />';
+        //expected = Parser["StaticHtmlParser"].decodeOutput("PGltZyBjbGFzcz0iaGVyby1pbWFnZSIgc3JjPSdodHRwOi8vc29ueWdsb2JhbC5zY2VuZTcuY29tL2lzL2ltYWdlL2d3dHByb2QvN2I0YTRiNTQ4NmVhYTdkY2JiODg0ZDc0ZjIwOTYwNWE/Zm10PXBqcGVnJndpZD0xNjY0JnFsdD00MycgYWx0PSdpbWFnZSBBbHQgVGV4dCAxJyAvPg==")
 
+        //assert.equal(actual, expected);
     });
 });
 

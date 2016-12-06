@@ -136,7 +136,3 @@ var StaticHtmlParser = StaticHtmlParser || {
         return this.statics._OUTPUT;
     }
 }
-
-module.exports = {
-  StaticHtmlParser: StaticHtmlParser // Public
-};

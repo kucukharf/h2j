@@ -811,7 +811,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
           "type": "urn:sony:field:image",
           "id": UniqueID,
           "image": {
-            "type": "urn:sony:image_container",
+            "type": "urn:sony:media:image_container",
             "imageFamily": {
               "locale": "all",
               "type": "urn:sony:media:image_family",
@@ -1336,7 +1336,3 @@ var StaticHtmlParser = StaticHtmlParser || {
         return this.statics._OUTPUT;
     }
 }
-
-module.exports = {
-  StaticHtmlParser: StaticHtmlParser // Public
-};
