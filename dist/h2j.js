@@ -1261,7 +1261,6 @@ var StaticHtmlParser = StaticHtmlParser || {
         }
         return '<span class="' + cls + '">' + match + '</span>';
     });
-
     },
     checkBeforeStart: function() {
         return this.elements.htmlTextBox === null ? false : true;
@@ -1337,5 +1336,3 @@ var StaticHtmlParser = StaticHtmlParser || {
         return this.statics._OUTPUT;
     }
 }
-
-StaticHtmlParser.init();
