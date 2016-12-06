@@ -1231,11 +1231,11 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     elements: {
         htmlTextBox: {
-            //item: document.getElementById("htmlInput"),
+            item: "htmlInput",
             type: 'change'
         },
         resultBox: {
-            //item: document.getElementById("resultBox")
+            item: "resultBox"
         }
     },
     startStaticHtmlParser: function() {
