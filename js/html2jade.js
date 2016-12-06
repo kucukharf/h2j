@@ -481,7 +481,7 @@
           "type": "urn:sony:field:image",
           "id": UniqueID,
           "image": {
-            "type": "urn:sony:image_container",
+            "type": "urn:sony:media:image_container",
             "imageFamily": {
               "locale": "all",
               "type": "urn:sony:media:image_family",
