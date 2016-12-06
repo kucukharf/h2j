@@ -803,7 +803,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 
         var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
-        node.classList.add("canvas-sc-image-selector")
+        //node.classList.add("canvas-sc-image-selector")
         tagAttr = this.writer.tagAttr(node, output.indents);
         output.writeln("+image(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
 
@@ -1231,11 +1231,11 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     elements: {
         htmlTextBox: {
-            item: document.getElementById("htmlInput"),
+            //item: document.getElementById("htmlInput"),
             type: 'change'
         },
         resultBox: {
-            item: document.getElementById("resultBox")
+            //item: document.getElementById("resultBox")
         }
     },
     startStaticHtmlParser: function() {
@@ -1336,3 +1336,7 @@ var StaticHtmlParser = StaticHtmlParser || {
         return this.statics._OUTPUT;
     }
 }
+
+module.exports = {
+  StaticHtmlParser: StaticHtmlParser // Public
+};

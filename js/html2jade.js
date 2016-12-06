@@ -473,7 +473,7 @@
 
         var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
-        node.classList.add("canvas-sc-image-selector")
+        //node.classList.add("canvas-sc-image-selector")
         tagAttr = this.writer.tagAttr(node, output.indents);
         output.writeln("+image(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
 

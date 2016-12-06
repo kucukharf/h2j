@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+  
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
@@ -21,12 +23,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    clean: ["temp", "dist"],
     mochaTest: {
       test: {
         options: {
           reporter: 'spec',
-          quiet: false, 
-          clearRequireCache: false, 
+          quiet: false,
+          clearRequireCache: false,
           noFail: false
         },
         src: ['test/**/*.js']
@@ -37,13 +40,15 @@ module.exports = function(grunt) {
       tasks: ['concat', 'uglify']
     }
   });
+
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('test', 'mochaTest');
-  grunt.registerTask('dist', ['test','concat', 'uglify']);
-  grunt.registerTask('release', ['dist']);
-  grunt.registerTask('default', ['test','watch']);
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
+  grunt.registerTask('test', 'clean','mochaTest');
+  grunt.registerTask('dist', ['test', 'concat', 'uglify']);
+  grunt.registerTask('default', ['dist', 'watch']);
 
 };
