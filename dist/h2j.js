@@ -700,6 +700,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
       tagHead = this.writer.tagHead(node);
       tagAttr = this.writer.tagAttr(node, output.indents);
       tagText = this.writer.tagText(node);
+
       if (tagName === 'script' || tagName === 'style') {
         if (node.hasAttribute('src')) {
           output.writeln(tagHead + tagAttr);
@@ -745,11 +746,11 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
         var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
         var type = node.getAttribute('data-field-type');
-
         tagAttr = this.writer.tagAttr(node, output.indents);
         if (type === 'text') {
           var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
           node.setAttribute("data-id", UniqueID)
+          node.classList.add("canvas-sc-link-selector")
           tagAttr = this.writer.tagAttr(node, output.indents);
           tagText = "!{fieldMap['" + UniqueID + "'].copy}"
           var text = {
@@ -762,6 +763,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
           output.writeln(tagHead + tagAttr + ' ' + tagText);
 
         } else {
+          node.classList.add("canvas-sc-link-selector")
           output.writeln("+link(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
           var link = {
             "type": "urn:sony:field:link",
@@ -775,35 +777,37 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
           };
           testJson.fields.push(link)
         }
-
-
-
       } else if (tagText) {
-        if (node.getAttribute("data-translate") === "no")  {
-          tagAttr = this.writer.tagAttr(node, output.indents);
-        } else {
-          var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
-          node.setAttribute("data-id", UniqueID)
-          tagAttr = this.writer.tagAttr(node, output.indents);
-          tagText = "!{fieldMap['" + UniqueID + "'].copy}"
-          var text = {
-            "type": "urn:sony:field:text",
-            "id": UniqueID,
-            "copy": node.innerText || ''
-          }
-          testJson.fields.push(text)
+      node.classList.add("canvas-sc-text-selector")
+      tagHead = this.writer.tagHead(node);
+        
+      if (node.getAttribute("data-translate") === "no")  {
+        tagAttr = this.writer.tagAttr(node, output.indents);
+      } else {
+        var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
+        node.setAttribute("data-id", UniqueID)
+        tagAttr = this.writer.tagAttr(node, output.indents);
+        console.log(node.classList);
+        tagText = "!{fieldMap['" + UniqueID + "'].copy}"
+        var text = {
+          "type": "urn:sony:field:text",
+          "id": UniqueID,
+          "copy": node.innerText || ''
         }
+        testJson.fields.push(text)
+      }
 
-        if (doNotEncode) {
-          return output.writeln(tagHead + tagAttr + ' ' + tagText);
-        } else {
-          return output.writeln(tagHead + tagAttr + ' ' + Ent.encode(tagText, entOptions));
-        }
+      if (doNotEncode) {
+        console.log(tagHead);
+        return output.writeln(tagHead + tagAttr + ' ' + tagText);
+      } else {
+        return output.writeln(tagHead + tagAttr + ' ' + Ent.encode(tagText, entOptions));
+      }
       } else if (tagName === 'img') {
 
         var UniqueID = node.getAttribute('data-id') ? node.getAttribute('data-id') : generateRandomNumber()
         node.setAttribute("data-id", UniqueID)
-        //node.classList.add("canvas-sc-image-selector")
+        node.classList.add("canvas-sc-image-selector")
         tagAttr = this.writer.tagAttr(node, output.indents);
         output.writeln("+image(fieldMap['" + UniqueID + "'], '" + node.getAttribute("class") + "')");
 
@@ -848,6 +852,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
       }
       this.writer.forEachChild(parent, function(child) {
         var nodeType;
+
         nodeType = child.nodeType;
         if (nodeType === 1) {
           return _this.element(child, output);

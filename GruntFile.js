@@ -48,7 +48,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('test', 'clean','mochaTest');
-  grunt.registerTask('dist', ['test', 'concat', 'uglify']);
+  grunt.registerTask('dist', ['concat', 'uglify']);
   grunt.registerTask('default', ['dist', 'watch']);
 
 };
