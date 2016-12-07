@@ -67,15 +67,14 @@ var StaticHtmlParser = StaticHtmlParser || {
     },
     addEventListeners: function() {
         _self = this;
-        this.elements.htmlTextBox.item.addEventListener(this.elements.htmlTextBox.type, function() {
+        document.getElementById(this.elements.htmlTextBox.item).addEventListener(this.elements.htmlTextBox.type, function() {
             _self.statics._HTML = this.value.trim();
             _self.convert2Jade(_self.statics._HTML, null)
             _self.showResults();
         })
     },
     showResults: function(argument) {
-
-       this.elements.resultBox.item.innerHTML = this.syntaxHighlight(JSON.stringify(this.statics, undefined, 4))
+       document.getElementById(this.elements.resultBox.item).innerHTML = this.syntaxHighlight(JSON.stringify(this.statics, undefined, 4))
     },
     convert2Jade: function(string, options) {
         var _self = this;
